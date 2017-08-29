@@ -214,6 +214,9 @@
     <Compile Include="Models\Vendedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\VendaIndexViewModel.cs" />
+    <Compile Include="ViewModels\VendedorIndexViewModel.cs" />
+    <Compile Include="ViewModels\VeiculoIndexViewModel .cs" />
     <Compile Include="ViewModels\ClienteIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -277,11 +280,14 @@
     <Content Include="Views\Veiculo\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Vendedor\Index.cshtml" />
+    <Content Include="Views\Veiculo\Details.cshtml" />
+    <Content Include="Views\Vendedor\Details.cshtml" />
+    <Content Include="Views\Venda\Index.cshtml" />
+    <Content Include="Views\Venda\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Venda\" />
-    <Folder Include="Views\Vendedor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

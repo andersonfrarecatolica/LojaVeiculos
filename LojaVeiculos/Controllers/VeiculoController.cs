@@ -1,4 +1,5 @@
 ﻿using LojaVeiculos.Models;
+using LojaVeiculos.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,10 @@ namespace LojaVeiculos.Controllers
 {
     public class VeiculoController : Controller
     {
-        // GET: Veiculo
-        public ActionResult Index()
+
+        public List<Veiculo> Veiculos = new List<Veiculo>
         {
-            var veiculo = new Veiculo
-            {
+            new Veiculo {
                 Id = 1,
                 Tipo = "Carro",
                 Marca = "Chevrolet",
@@ -23,11 +23,33 @@ namespace LojaVeiculos.Controllers
                 Cor = "Cinza",
                 Descricao = "Corsa completo, 4 portas",
                 Valor = 2250.00
-                
+            }
+        };
+
+        // GET: Veiculo
+        public ActionResult Index()
+        {
+            var viewModel = new VeiculoIndexViewModel()
+            {
+                Veiculos = Veiculos
             };
+
+            return View(viewModel);
+
+        }
+
+
+        public ActionResult Details(int id)
+        {
+            if (Veiculos.Count < id)
+            {
+                return HttpNotFound();
+            }
+
+            var veiculo = Veiculos[id - 1];
+
             return View(veiculo);
         }
-        
 
     }
 }

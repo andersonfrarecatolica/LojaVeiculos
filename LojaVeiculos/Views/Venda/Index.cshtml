@@ -1,0 +1,43 @@
+﻿@model LojaVeiculos.ViewModels.VendaIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Veículos</h2>
+
+@if (@Model.Vendas.Count > 0)
+{
+
+    <table class="table">
+        <caption>Optional table caption.</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nota Filcal</th>
+                <th>Data</th>
+                <th>Valor</th>
+                <th>Ver Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var venda in Model.Vendas)
+            {
+                <tr>
+                    <th scope="row">@venda.Id</th>
+                    <td>@venda.NotaFiscal</td>
+                    <td>@venda.Data</td>
+                    <td>@venda.Valor</td>
+                    <td>@Html.ActionLink(@venda.NotaFiscal, "Details", new { venda.Id })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+
+    <p>Nenhum cliente cadastrado!</p>
+
+}
