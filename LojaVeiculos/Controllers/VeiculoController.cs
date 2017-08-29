@@ -15,11 +15,19 @@ namespace LojaVeiculos.Controllers
             var veiculo = new Veiculo
             {
                 Id = 1,
+                Tipo = "Carro",
                 Marca = "Chevrolet",
+                Modelo = "Corsa",
                 Ano = 2012,
-                Modelo = "Corsa"
+                Placa = "MIT 1236",
+                Cor = "Cinza",
+                Descricao = "Corsa completo, 4 portas",
+                Valor = 2250.00
+                
             };
             return View(veiculo);
         }
+        
+
     }
 }
