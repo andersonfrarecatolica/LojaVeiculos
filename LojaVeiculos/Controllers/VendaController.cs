@@ -5,48 +5,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace LojaVeiculos.Controllers
 {
     public class VendaController : Controller
     {
 
-        public List<Venda> Vendas = new List<Venda>
-        {
-            new Venda {
-                Id = 1,
-                IdVeiculo = 1,
-                IdCliente = 1,
-                IdVendedor = 1,
-                NotaFiscal = "NF12321RS",
-                Data = "10/02/2017",
-                Valor = 22250.00
-            }
-        };
+        private ApplicationDbContext _context;
 
+        public VendaController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         // GET: Venda
         public ActionResult Index()
         {
-            var viewModel = new VendaIndexViewModel()
-            {
-                Vendas = Vendas
-            };
-
-            return View(viewModel);
+            var vendas = _context.Vendas.Include(a => a.Veiculo).Include(b => b.Cliente).Include(c => c.Vendedor).ToList();
+            return View(vendas);
 
         }
 
         public ActionResult Details(int id)
         {
-            if (Vendas.Count < id)
+
+            var vendas = _context.Vendas.Include(a => a.Veiculo).Include(b => b.Cliente).Include(c => c.Vendedor).SingleOrDefault(a => a.Id == id);
+
+            if (vendas == null)
             {
                 return HttpNotFound();
             }
 
-            var venda = Vendas[id - 1];
-
-            return View(venda);
+            return View(vendas);
         }
 
     }

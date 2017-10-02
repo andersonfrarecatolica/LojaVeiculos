@@ -10,6 +10,7 @@ namespace LojaVeiculos.Controllers
 {
     public class VeiculoController : Controller
     {
+        private ApplicationDbContext _context;
 
         public List<Veiculo> Veiculos = new List<Veiculo>
         {
@@ -26,27 +27,35 @@ namespace LojaVeiculos.Controllers
             }
         };
 
+        public VeiculoController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: Veiculo
         public ActionResult Index()
         {
-            var viewModel = new VeiculoIndexViewModel()
-            {
-                Veiculos = Veiculos
-            };
+            var veiculos = _context.Veiculos.ToList();
 
-            return View(viewModel);
+            return View(veiculos);
 
         }
 
 
         public ActionResult Details(int id)
         {
-            if (Veiculos.Count < id)
+
+            var veiculo = _context.Veiculos.ToList();
+
+            if (veiculo == null)
             {
                 return HttpNotFound();
             }
-
-            var veiculo = Veiculos[id - 1];
 
             return View(veiculo);
         }

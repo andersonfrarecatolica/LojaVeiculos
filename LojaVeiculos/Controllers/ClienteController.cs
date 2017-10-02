@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace LojaVeiculos.Controllers
 {
     public class ClienteController : Controller
     {
 
+        private ApplicationDbContext _context;
 
         public List<Cliente> Clientes = new List<Cliente>
         {
@@ -29,28 +31,36 @@ namespace LojaVeiculos.Controllers
             }
         };
 
+        public ClienteController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: Customers
-        
+
         public ActionResult Index()
         {
 
-            var viewModel = new ClienteIndexViewModel()
-            {
-                Clientes = Clientes
-            };
+            var clientes = _context.Clientes.ToList();
 
-            return View(viewModel);
+            return View(clientes);
                 
         }
         
         public ActionResult Details(int id)
         {
-            if (Clientes.Count < id)
+
+            var cliente = _context.Clientes.ToList();
+
+            if (cliente == null)
             {
                 return HttpNotFound();
             }
-
-            var cliente = Clientes[id - 1];
 
             return View(cliente);
         }
