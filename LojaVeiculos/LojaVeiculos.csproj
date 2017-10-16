@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201709060038085_criacaoChaveEstrangeiraVenda.Designer.cs">
       <DependentUpon>201709060038085_criacaoChaveEstrangeiraVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710110037362_Cliente.cs" />
+    <Compile Include="Migrations\201710110037362_Cliente.Designer.cs">
+      <DependentUpon>201710110037362_Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -294,6 +298,7 @@
     <Content Include="Views\Vendedor\Details.cshtml" />
     <Content Include="Views\Venda\Index.cshtml" />
     <Content Include="Views\Venda\Details.cshtml" />
+    <Content Include="Views\Cliente\ClienteForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709060038085_criacaoChaveEstrangeiraVenda.resx">
       <DependentUpon>201709060038085_criacaoChaveEstrangeiraVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710110037362_Cliente.resx">
+      <DependentUpon>201710110037362_Cliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
