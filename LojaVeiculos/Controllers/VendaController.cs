@@ -45,5 +45,66 @@ namespace LojaVeiculos.Controllers
             return View(vendas);
         }
 
+        public ActionResult New()
+        {
+
+
+            var viewModel = new VendaIndexViewModel
+            {
+                Venda = new Venda(),
+                Veiculos = _context.Veiculos.ToList(),
+                Clientes = _context.Clientes.ToList(),
+                Vendedores = _context.Vendedores.ToList(),
+            };
+
+            return View("VendaForm", viewModel);
+        }
+
+        [HttpPost] // só será acessada com POST
+        public ActionResult Save(Venda venda) // recebemos um cliente
+        {
+            
+            if (venda.Id == 0)
+            {
+                // armazena o cliente em memória
+                _context.Vendas.Add(venda);
+            }
+            else
+            {
+                var vendaInDb = _context.Vendas.Single(v => v.Id == venda.Id);
+
+                vendaInDb.VeiculoId = venda.VeiculoId;
+                vendaInDb.ClienteId = venda.ClienteId;
+                vendaInDb.VendedorId = venda.VendedorId;
+                vendaInDb.NotaFiscal = venda.NotaFiscal;
+                vendaInDb.Data = venda.Data;
+                vendaInDb.Valor = venda.Valor;
+
+            }
+
+            // faz a persistência
+            _context.SaveChanges();
+            // Voltamos para a lista de clientes
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var venda = _context.Vendas.SingleOrDefault(c => c.Id == id);
+
+            if (venda == null)
+                return HttpNotFound();
+
+            var viewModel = new VendaIndexViewModel
+            {
+                Venda = venda,
+                Veiculos = _context.Veiculos.ToList(),
+                Clientes = _context.Clientes.ToList()
+
+            };
+
+            return View("VendaForm", viewModel);
+        }
+
     }
 }

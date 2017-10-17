@@ -8,6 +8,11 @@ namespace LojaVeiculos.ViewModels
 {
     public class VendaIndexViewModel
     {
-        public List<Venda> Vendas { get; set; }
+        public List<Veiculo> Veiculos { get; set; }
+        public List<Vendedor> Vendedores { get; set; }
+        public List<Cliente> Clientes { get; set; }
+
+        public Venda Venda { get; set; }
+
     }
 }

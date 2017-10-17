@@ -1,12 +1,15 @@
-﻿@model LojaVeiculos.ViewModels.VendaIndexViewModel
+﻿@model IEnumerable<LojaVeiculos.Models.Venda>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Veículos</h2>
+<h2>
+    Venda
+    @Html.ActionLink("Nova Venda", "New", null, new { @class = "btn btn-primary pull-right" })
+</h2>
 
-@if (@Model.Vendas.Count > 0)
+@if (@Model.Any())
 {
 
     <table class="table">
@@ -14,14 +17,14 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nota Filcal</th>
+                <th>Nota Fiscal</th>
                 <th>Data</th>
                 <th>Valor</th>
                 <th>Ver Cliente</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var venda in Model.Vendas)
+            @foreach (var venda in Model)
             {
                 <tr>
                     <th scope="row">@venda.Id</th>
@@ -38,6 +41,6 @@
 else
 {
 
-    <p>Nenhum cliente cadastrado!</p>
+    <p>Nenhuma venda cadastrada!</p>
 
 }

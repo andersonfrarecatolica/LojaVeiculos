@@ -1,0 +1,31 @@
+﻿@model LojaVeiculos.Models.Vendedor
+@{
+    ViewBag.Title = "VendedorForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Vendedor"))
+{
+    @Html.HiddenFor(v => v.Id)
+    <div class="form-group">
+        @Html.LabelFor(v => v.Nome)
+        @Html.TextBoxFor(v => v.Nome, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(v => v.Cpf)
+        @Html.TextBoxFor(v => v.Cpf, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(v => v.Email)
+        @Html.TextBoxFor(v => v.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(v => v.Telefone)
+        @Html.TextBoxFor(v => v.Telefone, new { @class = "form-control" })
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

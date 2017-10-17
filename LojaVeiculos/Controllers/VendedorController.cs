@@ -11,39 +11,80 @@ namespace LojaVeiculos.Controllers
     public class VendedorController : Controller
     {
 
-        public List<Vendedor> Vendedores = new List<Vendedor>
-        {
-            new Vendedor {
-                Id = 1,
-                Nome = "Rodrigo",
-                Cpf = "123.532.412-23",
-                Telefone = "47-999887654",
-                Email = "rodrigo@teste.com.br"
-            }
-        };
+        private ApplicationDbContext _context;
 
-   
+        public VendedorController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+
         // GET: Vendedor
         public ActionResult Index()
         {
-            var viewModel = new VendedorIndexViewModel()
-            {
-                Vendedores = Vendedores
-            };
+            var vendedores = _context.Vendedores.ToList();
 
-            return View(viewModel);
+            return View(vendedores);
         }
 
         public ActionResult Details(int id)
         {
-            if (Vendedores.Count < id)
+
+            var vendedor = _context.Vendedores.ToList();
+
+            if (vendedor == null)
             {
                 return HttpNotFound();
             }
 
-            var vendedor = Vendedores[id - 1];
-
             return View(vendedor);
+        }
+
+        public ActionResult New()
+        {
+            var vendedor = new Vendedor();
+
+            return View("VendedorForm", vendedor);
+        }
+
+        [HttpPost] // só será acessada com POST
+        public ActionResult Save(Vendedor vendedor) // recebemos um vendedor
+        {
+            if (vendedor.Id == 0)
+            {
+                // armazena o vendedor em memória
+                _context.Vendedores.Add(vendedor);
+            }
+            else
+            {
+                var vendedorInDb = _context.Vendedores.Single(v => v.Id == vendedor.Id);
+
+                vendedorInDb.Nome = vendedor.Nome;
+                vendedorInDb.Cpf = vendedor.Cpf;
+                vendedorInDb.Telefone = vendedor.Telefone;
+                vendedorInDb.Email = vendedor.Email;
+
+            }
+
+            // faz a persistência
+            _context.SaveChanges();
+            // Voltamos para a lista de vendedores
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var vendedor = _context.Vendedores.SingleOrDefault(v => v.Id == id);
+
+            if (vendedor == null)
+                return HttpNotFound();
+
+            return View("VendedorForm", vendedor);
         }
 
     }
