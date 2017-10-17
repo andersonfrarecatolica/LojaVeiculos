@@ -8,6 +8,6 @@ namespace LojaVeiculos.ViewModels
 {
     public class ClienteIndexViewModel
     {
-        public List<Cliente> Clientes { get; set; }
+        public Cliente Cliente { get; set; }
     }
 }

@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201710110037362_Cliente.Designer.cs">
       <DependentUpon>201710110037362_Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710172136342_veiculos_update.cs" />
+    <Compile Include="Migrations\201710172136342_veiculos_update.Designer.cs">
+      <DependentUpon>201710172136342_veiculos_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -299,6 +303,7 @@
     <Content Include="Views\Venda\Index.cshtml" />
     <Content Include="Views\Venda\Details.cshtml" />
     <Content Include="Views\Cliente\ClienteForm.cshtml" />
+    <Content Include="Views\Veiculo\VeiculoForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710110037362_Cliente.resx">
       <DependentUpon>201710110037362_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172136342_veiculos_update.resx">
+      <DependentUpon>201710172136342_veiculos_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

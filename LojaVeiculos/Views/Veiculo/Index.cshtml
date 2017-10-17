@@ -1,12 +1,15 @@
-﻿@model LojaVeiculos.ViewModels.VeiculoIndexViewModel
+﻿@model IEnumerable<LojaVeiculos.Models.Veiculo>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Veículos</h2>
+<h2>
+    Veículos
+    @Html.ActionLink("Novo Veículo", "New", null, new { @class = "btn btn-primary pull-right" })
+</h2>
 
-@if (@Model.Veiculos.Count > 0)
+@if (Model.Any())
 {
 
     <table class="table">
@@ -21,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var veiculo in Model.Veiculos)
+            @foreach (var veiculo in Model)
             {
                 <tr>
                     <th scope="row">@veiculo.Id</th>

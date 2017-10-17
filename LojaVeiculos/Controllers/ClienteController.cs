@@ -14,23 +14,6 @@ namespace LojaVeiculos.Controllers
 
         private ApplicationDbContext _context;
 
-        public List<Cliente> Clientes = new List<Cliente>
-        {
-            new Cliente {
-                Id = 1,
-                Nome = "Anderson Frare",
-                Cpf = "070.932.119-84",
-                DataNascimento = "19/09/1995",
-                Email = "andersonfrare@hotmail.com",
-                Telefone = "47-999658818",
-                Rua = "Dr Arquimedes Dantas",
-                Numero = "40",
-                Bairro = "Vila Lenzi",
-                Cidade = "Jaraguá do Sul", 
-                Estado = "SC"
-            }
-        };
-
         public ClienteController()
         {
             _context = new ApplicationDbContext();
