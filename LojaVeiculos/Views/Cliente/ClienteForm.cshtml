@@ -13,18 +13,22 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Nome)
         @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nome)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Cpf)
         @Html.TextBoxFor(m => m.Cpf, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Cpf)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.DataNascimento)
         @Html.TextBoxFor(m => m.DataNascimento, "{0: dd/MM/yyyy }", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DataNascimento)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Email)
         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Telefone)

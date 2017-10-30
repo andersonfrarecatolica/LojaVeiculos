@@ -20,7 +20,9 @@
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Ano</th>
-                <th>Ver Cliente</th>
+                <th>
+                    Ações
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +33,10 @@
                     <td>@veiculo.Marca</td>
                     <td>@veiculo.Modelo</td>
                     <td>@veiculo.Ano</td>
-                    <td>@Html.ActionLink(@veiculo.Modelo, "Details", new { veiculo.Id })</td>
+                    <td>
+                        @Html.ActionLink("Ver", "Details", new { veiculo.Id }, new { @class = "btn btn-success btn-xs" })
+                        @Html.ActionLink("Editar", "Edit", new { veiculo.Id }, new { @class = "btn btn-warning btn-xs" })
+                    </td>
                 </tr>
             }
         </tbody>

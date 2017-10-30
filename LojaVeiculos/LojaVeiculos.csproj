@@ -229,6 +229,18 @@
     <Compile Include="Migrations\201710172258277_update_vendas.Designer.cs">
       <DependentUpon>201710172258277_update_vendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710302318526_validateCliente.cs" />
+    <Compile Include="Migrations\201710302318526_validateCliente.Designer.cs">
+      <DependentUpon>201710302318526_validateCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710302333059_validationVendedor.cs" />
+    <Compile Include="Migrations\201710302333059_validationVendedor.Designer.cs">
+      <DependentUpon>201710302333059_validationVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710302338498_validationVeiculo.cs" />
+    <Compile Include="Migrations\201710302338498_validationVeiculo.Designer.cs">
+      <DependentUpon>201710302338498_validationVeiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -344,6 +356,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710172258277_update_vendas.resx">
       <DependentUpon>201710172258277_update_vendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710302318526_validateCliente.resx">
+      <DependentUpon>201710302318526_validateCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710302333059_validationVendedor.resx">
+      <DependentUpon>201710302333059_validationVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710302338498_validationVeiculo.resx">
+      <DependentUpon>201710302338498_validationVeiculo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

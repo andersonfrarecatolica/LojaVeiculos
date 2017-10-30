@@ -16,12 +16,15 @@ namespace LojaVeiculos.Models
         [Display(Name = "Nome")]
         public string Nome { get; set; }
 
+        [Required]
         [Display(Name = "Cpf")]
         public string Cpf { get; set; }
 
+        [Required]
         [Display(Name = "Telefone")]
         public string Telefone { get; set; }
 
+        [Required]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
     }

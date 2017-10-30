@@ -63,7 +63,22 @@ namespace LojaVeiculos.Controllers
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Venda venda) // recebemos um cliente
         {
-            
+
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new VendaIndexViewModel
+                {
+                    Venda = venda,
+                    Veiculos = _context.Veiculos.ToList(),
+                    Clientes = _context.Clientes.ToList(),
+                    Vendedores = _context.Vendedores.ToList()
+
+                };
+
+                return View("VendaForm", viewModel);
+
+            }
+
             if (venda.Id == 0)
             {
                 // armazena o cliente em memória
@@ -99,7 +114,8 @@ namespace LojaVeiculos.Controllers
             {
                 Venda = venda,
                 Veiculos = _context.Veiculos.ToList(),
-                Clientes = _context.Clientes.ToList()
+                Clientes = _context.Clientes.ToList(),
+                Vendedores = _context.Vendedores.ToList(),
 
             };
 

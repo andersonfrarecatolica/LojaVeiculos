@@ -13,34 +13,42 @@
     <div class="form-group">
         @Html.LabelFor(v => v.Tipo)
         @Html.TextBoxFor(v => v.Tipo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Tipo)
     </div>
     <div class="form-group">
         @Html.LabelFor(v => v.Marca)
         @Html.TextBoxFor(v => v.Marca, new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Marca)
     </div>
     <div class="form-group">
         @Html.LabelFor(v => v.Modelo)
         @Html.TextBoxFor(v => v.Modelo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Modelo)
     </div>
     <div class="form-group">
         @Html.LabelFor(v => v.Ano)
         @Html.TextBoxFor(v => v.Ano, new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Ano)
     </div>
     <div class="form-group">
         @Html.LabelFor(v => v.Placa)
         @Html.TextBoxFor(v => v.Placa, new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Placa)
     </div>
     <div class="form-group">
         @Html.LabelFor(v => v.Cor)
         @Html.TextBoxFor(v => v.Cor, new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Cor)
     </div>
     <div class="form-group">
         @Html.LabelFor(v => v.Descricao)
         @Html.TextBoxFor(v => v.Descricao, new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Descricao)
     </div>
     <div class="form-group">
         @Html.LabelFor(v => v.Valor)
         @Html.TextBoxFor(v => v.Valor, new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Valor)
     </div>
     
     <button type="submit" class="btn btn-primary">Salvar</button>

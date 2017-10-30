@@ -38,7 +38,7 @@ namespace LojaVeiculos.Controllers
         public ActionResult Details(int id)
         {
 
-            var cliente = _context.Clientes.ToList();
+            var cliente = _context.Clientes.SingleOrDefault(c => c.Id == id);
 
             if (cliente == null)
             {
@@ -58,6 +58,12 @@ namespace LojaVeiculos.Controllers
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Cliente cliente) // recebemos um cliente
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View("ClienteForm", cliente);
+            }
+
             if (cliente.Id == 0)
             {
                 // armazena o cliente em memória

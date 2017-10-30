@@ -34,7 +34,7 @@ namespace LojaVeiculos.Controllers
         public ActionResult Details(int id)
         {
 
-            var veiculo = _context.Veiculos.ToList();
+            var veiculo = _context.Veiculos.SingleOrDefault(v => v.Id == id);
 
             if (veiculo == null)
             {
@@ -54,6 +54,12 @@ namespace LojaVeiculos.Controllers
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Veiculo veiculo) // recebemos um cliente
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View("VeiculoForm", veiculo);
+            }
+
             if (veiculo.Id == 0)
             {
                 // armazena o cliente em memória
@@ -87,7 +93,7 @@ namespace LojaVeiculos.Controllers
             if (veiculo == null)
                 return HttpNotFound();
 
-            return View("ClienteForm", veiculo);
+            return View("VeiculoForm", veiculo);
         }
 
     }
