@@ -1,6 +1,6 @@
 ﻿@model LojaVeiculos.ViewModels.VendaIndexViewModel
 @{
-    ViewBag.Title = "VendaForm";
+    ViewBag.Title = "Venda";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -45,4 +45,19 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
+}
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval");
+
+    <script type="text/javascript">
+        $.validator.mthods.date = function (value, element) {
+
+            Globalize.culture("pt-BR");
+            return this.optional(element) || Globalize.parseData(value) !== null;
+
+        }
+    </script>
+
 }
