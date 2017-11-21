@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.NotaFiscal</h2>
+<h2>Nota Fiscal: @Model.NotaFiscal</h2>
 
-<p>@Model.IdVeiculo</p>
-<p>@Model.IdCliente</p>
-<p>@Model.IdVendedor</p>
-<p>@Model.NotaFiscal</p>
-<p>@Model.Data</p>
-<p>@Model.Valor</p>
+<p>Veículo: @Model.Veiculo.Marca - @Model.Veiculo.Modelo</p>
+<p>Cliente: @Model.Cliente.Nome</p>
+<p>Vendedor: @Model.Vendedor.Nome</p>
+<p>Nota FIscal: @Model.NotaFiscal</p>
+<p>Data: @Model.Data</p>
+<p>Valor: R$ @Model.Valor</p>
 
 

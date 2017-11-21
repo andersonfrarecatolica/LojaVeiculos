@@ -96,5 +96,18 @@ namespace LojaVeiculos.Controllers
             return View("VeiculoForm", veiculo);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var veiculo = _context.Veiculos.SingleOrDefault(c => c.Id == id);
+
+            if (veiculo == null)
+                return HttpNotFound();
+
+            _context.Veiculos.Remove(veiculo);
+            _context.SaveChanges();
+
+            return new HttpStatusCodeResult(200);
+        }
+
     }
 }

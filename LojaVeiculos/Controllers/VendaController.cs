@@ -122,5 +122,18 @@ namespace LojaVeiculos.Controllers
             return View("VendaForm", viewModel);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var venda = _context.Vendas.SingleOrDefault(c => c.Id == id);
+
+            if (venda == null)
+                return HttpNotFound();
+
+            _context.Vendas.Remove(venda);
+            _context.SaveChanges();
+
+            return new HttpStatusCodeResult(200);
+        }
+
     }
 }

@@ -12,8 +12,7 @@
 @if (Model.Any())
 {
 
-    <table class="table">
-        <caption>Optional table caption.</caption>
+    <table id="vendedores" class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -31,7 +30,12 @@
                 <td>@vendedor.Nome</td>
                 <td>@vendedor.Email</td>
                 <td>@vendedor.Telefone</td>
-                <td>@Html.ActionLink(@vendedor.Nome, "Details", new { vendedor.Id})</td>
+                <td>
+                    @Html.ActionLink("Ver", "Details", new { vendedor.Id }, new { @class = "btn btn-success btn-xs" })
+                    @Html.ActionLink("Editar", "Edit", new { vendedor.Id }, new { @class = "btn btn-warning btn-xs" })
+                    <button data-vendedor-id="@vendedor.Id" class="btn btn-danger btn-xs js-delete">Remover</button>
+
+                </td>
             </tr>
             }
         </tbody>
@@ -43,4 +47,38 @@ else
 
     <p>Nenhum vendedor cadastrado!</p>
 
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#vendedores").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este vendedor?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/vendedor/delete/" + button.attr("data-vendedor-id"),
+                                    method: "GET",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                    /*if (confirm("Tem certeza que quer remover este cliente?")) {
+                        $.ajax({
+                            url: "/customers/delete/" + button.attr("data-customer-id"),
+                            method: "GET",
+                            success: function() {
+                                button.parents("tr").remove();
+                            }
+                        });
+                    }*/
+                });
+        });
+    </script>
 }
