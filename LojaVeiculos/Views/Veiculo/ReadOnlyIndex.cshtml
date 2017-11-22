@@ -6,7 +6,6 @@
 
 <h2>
     Veículos
-    @Html.ActionLink("Novo Veículo", "New", null, new { @class = "btn btn-primary pull-right" })
 </h2>
 
 @if (Model.Any())
@@ -20,9 +19,7 @@
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Ano</th>
-                <th>
-                    Ações
-                </th>
+                
             </tr>
         </thead>
         <tbody>
@@ -33,11 +30,7 @@
                     <td>@veiculo.Marca</td>
                     <td>@veiculo.Modelo</td>
                     <td>@veiculo.Ano</td>
-                    <td>
-                        @Html.ActionLink("Ver", "Details", new { veiculo.Id }, new { @class = "btn btn-success btn-xs" })
-                        @Html.ActionLink("Editar", "Edit", new { veiculo.Id }, new { @class = "btn btn-warning btn-xs" })
-                        <button data-veiculo-id="@veiculo.Id" class="btn btn-danger btn-xs js-delete">Remover</button>
-                    </td>
+                    
                 </tr>
             }
         </tbody>

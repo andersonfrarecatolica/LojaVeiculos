@@ -29,7 +29,11 @@ namespace LojaVeiculos.Controllers
         {
             var vendedores = _context.Vendedores.ToList();
 
-            return View(vendedores);
+            if (User.IsInRole("CanManageData"))
+                return View(vendedores);
+            return View("ReadOnlyIndex", vendedores);
+
+           
         }
 
         public ActionResult Details(int id)
@@ -45,6 +49,7 @@ namespace LojaVeiculos.Controllers
             return View(vendedor);
         }
 
+        [Authorize(Roles = "CanManageData")]
         public ActionResult New()
         {
             var vendedor = new Vendedor();
@@ -52,6 +57,7 @@ namespace LojaVeiculos.Controllers
             return View("VendedorForm", vendedor);
         }
 
+        [Authorize(Roles = "CanManageData")]
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Vendedor vendedor) // recebemos um vendedor
         {
@@ -83,6 +89,7 @@ namespace LojaVeiculos.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "CanManageData")]
         public ActionResult Edit(int id)
         {
             var vendedor = _context.Vendedores.SingleOrDefault(v => v.Id == id);
@@ -93,7 +100,20 @@ namespace LojaVeiculos.Controllers
             return View("VendedorForm", vendedor);
         }
 
-    }
+        [Authorize(Roles = "CanManageData")]
+        public ActionResult Delete(int id)
+        {
+            var vendedor = _context.Vendedores.SingleOrDefault(c => c.Id == id);
 
+            if (vendedor == null)
+                return HttpNotFound();
+
+            _context.Vendedores.Remove(vendedor);
+            _context.SaveChanges();
+
+            return new HttpStatusCodeResult(200);
+        }
+
+    }
 
 }

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<LojaVeiculos.Models.Cliente>
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>
+    Clientes
+</h2>
+
+@if (Model.Any()) { 
+
+
+    <table id="clientes" class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cliente in Model)
+            {
+            <tr>
+                <th scope="row">@cliente.Id</th>
+                <td>@cliente.Nome</td>
+                <td>@cliente.Email</td>
+                <td>@cliente.Telefone</td>               
+            </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+
+    <p>Nenhum cliente cadastrado!</p>
+
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $("#clientes").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este cliente?",
+                        function(result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/cliente/delete/" + button.attr("data-cliente-id"),
+                                    method: "GET",
+                                    success: function() {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                    /*if (confirm("Tem certeza que quer remover este cliente?")) {
+                        $.ajax({
+                            url: "/customers/delete/" + button.attr("data-customer-id"),
+                            method: "GET",
+                            success: function() {
+                                button.parents("tr").remove();
+                            }
+                        });
+                    }*/
+                });
+        });
+    </script>
+}

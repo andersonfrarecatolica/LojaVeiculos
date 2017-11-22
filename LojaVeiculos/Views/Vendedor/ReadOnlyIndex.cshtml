@@ -1,44 +1,35 @@
-﻿@model IEnumerable<LojaVeiculos.Models.Veiculo>
+﻿@model IEnumerable<LojaVeiculos.Models.Vendedor>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>
-    Veículos
-    @Html.ActionLink("Novo Veículo", "New", null, new { @class = "btn btn-primary pull-right" })
+    Vendedor
 </h2>
 
 @if (Model.Any())
 {
 
-    <table id="veiculos" class="table">
-        <caption>Optional table caption.</caption>
+    <table id="vendedores" class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Ano</th>
-                <th>
-                    Ações
-                </th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var veiculo in Model)
+            @foreach (var vendedor in Model)
             {
-                <tr>
-                    <th scope="row">@veiculo.Id</th>
-                    <td>@veiculo.Marca</td>
-                    <td>@veiculo.Modelo</td>
-                    <td>@veiculo.Ano</td>
-                    <td>
-                        @Html.ActionLink("Ver", "Details", new { veiculo.Id }, new { @class = "btn btn-success btn-xs" })
-                        @Html.ActionLink("Editar", "Edit", new { veiculo.Id }, new { @class = "btn btn-warning btn-xs" })
-                        <button data-veiculo-id="@veiculo.Id" class="btn btn-danger btn-xs js-delete">Remover</button>
-                    </td>
-                </tr>
+            <tr>
+                <th scope="row">@vendedor.Id</th>
+                <td>@vendedor.Nome</td>
+                <td>@vendedor.Email</td>
+                <td>@vendedor.Telefone</td>
+                
+            </tr>
             }
         </tbody>
     </table>
@@ -47,7 +38,7 @@
 else
 {
 
-    <p>Nenhum cliente cadastrado!</p>
+    <p>Nenhum vendedor cadastrado!</p>
 
 }
 
@@ -56,14 +47,14 @@ else
 {
     <script>
         $(document).ready(function() {
-            $("#veiculos").on("click", ".js-delete",
+            $("#vendedores").on("click", ".js-delete",
                 function () {
                     var button = $(this);
-                    bootbox.confirm("Tem certeza que quer remover este veículo?",
+                    bootbox.confirm("Tem certeza que quer remover este vendedor?",
                         function(result) {
                             if (result) {
                                 $.ajax({
-                                    url: "/veiculo/delete/" + button.attr("data-veiculo-id"),
+                                    url: "/vendedor/delete/" + button.attr("data-vendedor-id"),
                                     method: "GET",
                                     success: function() {
                                         button.parents("tr").remove();

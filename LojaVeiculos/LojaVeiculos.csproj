@@ -242,6 +242,14 @@
     <Compile Include="Migrations\201710302338498_validationVeiculo.Designer.cs">
       <DependentUpon>201710302338498_validationVeiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711212249445_createUsers.cs" />
+    <Compile Include="Migrations\201711212249445_createUsers.Designer.cs">
+      <DependentUpon>201711212249445_createUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711212355161_ChangeRoleName.cs" />
+    <Compile Include="Migrations\201711212355161_ChangeRoleName.Designer.cs">
+      <DependentUpon>201711212355161_ChangeRoleName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -345,6 +353,10 @@
     <Content Include="Views\Veiculo\VeiculoForm.cshtml" />
     <Content Include="Views\Vendedor\VendedorForm.cshtml" />
     <Content Include="Views\Venda\VendaForm.cshtml" />
+    <Content Include="Views\Cliente\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Veiculo\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Venda\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Vendedor\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -384,6 +396,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710302338498_validationVeiculo.resx">
       <DependentUpon>201710302338498_validationVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711212249445_createUsers.resx">
+      <DependentUpon>201711212249445_createUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711212355161_ChangeRoleName.resx">
+      <DependentUpon>201711212355161_ChangeRoleName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

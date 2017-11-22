@@ -26,8 +26,10 @@ namespace LojaVeiculos.Controllers
         public ActionResult Index()
         {
             var veiculos = _context.Veiculos.ToList();
-
-            return View(veiculos);
+            if (User.IsInRole("CanManageData"))
+                return View(veiculos);
+            return View("ReadOnlyIndex", veiculos);
+            
 
         }
 
@@ -44,6 +46,7 @@ namespace LojaVeiculos.Controllers
             return View(veiculo);
         }
 
+        [Authorize(Roles = "CanManageData")]
         public ActionResult New()
         {
             var veiculo = new Veiculo();
@@ -51,6 +54,7 @@ namespace LojaVeiculos.Controllers
             return View("VeiculoForm", veiculo);
         }
 
+        [Authorize(Roles = "CanManageData")]
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Veiculo veiculo) // recebemos um cliente
         {
@@ -86,6 +90,7 @@ namespace LojaVeiculos.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "CanManageData")]
         public ActionResult Edit(int id)
         {
             var veiculo = _context.Veiculos.SingleOrDefault(v => v.Id == id);
@@ -96,6 +101,7 @@ namespace LojaVeiculos.Controllers
             return View("VeiculoForm", veiculo);
         }
 
+        [Authorize(Roles = "CanManageData")]
         public ActionResult Delete(int id)
         {
             var veiculo = _context.Veiculos.SingleOrDefault(c => c.Id == id);

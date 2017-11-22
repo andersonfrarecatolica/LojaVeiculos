@@ -28,7 +28,10 @@ namespace LojaVeiculos.Controllers
         public ActionResult Index()
         {
             var vendas = _context.Vendas.Include(a => a.Veiculo).Include(b => b.Cliente).Include(c => c.Vendedor).ToList();
-            return View(vendas);
+            
+            if (User.IsInRole("CanManageData"))
+                return View(vendas);
+            return View("ReadOnlyIndex", vendas);
 
         }
 
@@ -45,6 +48,7 @@ namespace LojaVeiculos.Controllers
             return View(vendas);
         }
 
+        [Authorize(Roles = "CanManageData")]
         public ActionResult New()
         {
 
@@ -60,6 +64,7 @@ namespace LojaVeiculos.Controllers
             return View("VendaForm", viewModel);
         }
 
+        [Authorize(Roles = "CanManageData")]
         [HttpPost] // só será acessada com POST
         public ActionResult Save(Venda venda) // recebemos um cliente
         {
@@ -103,6 +108,7 @@ namespace LojaVeiculos.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "CanManageData")]
         public ActionResult Edit(int id)
         {
             var venda = _context.Vendas.SingleOrDefault(c => c.Id == id);
@@ -122,6 +128,7 @@ namespace LojaVeiculos.Controllers
             return View("VendaForm", viewModel);
         }
 
+        [Authorize(Roles = "CanManageData")]
         public ActionResult Delete(int id)
         {
             var venda = _context.Vendas.SingleOrDefault(c => c.Id == id);
