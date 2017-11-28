@@ -26,7 +26,7 @@ namespace LojaVeiculos.Models
 
         [Required]
         [Display(Name = "Ano")]
-        public int Ano { get; set; }
+        public int? Ano { get; set; }
 
         [Required]
         [Display(Name = "Placa")]
@@ -42,6 +42,6 @@ namespace LojaVeiculos.Models
 
         [Required]
         [Display(Name = "Valor")]
-        public double Valor { get; set; }
+        public double? Valor { get; set; }
     }
 }

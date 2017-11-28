@@ -1,6 +1,6 @@
 ﻿@model LojaVeiculos.Models.Cliente
 @{
-    ViewBag.Title = "Clientes";
+    ViewBag.Title = Model.Id == 0 ? "Novo Cliente" : "Editar Cliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -22,7 +22,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.DataNascimento)
-        @Html.TextBoxFor(m => m.DataNascimento, "{0: dd/MM/yyyy }", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.DataNascimento, "{0:dd/MM/yyyy}", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.DataNascimento)
     </div>
     <div class="form-group">

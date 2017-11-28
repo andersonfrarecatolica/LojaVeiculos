@@ -37,10 +37,10 @@ namespace LojaVeiculos.Models
 
         [Required]
         [Display(Name = "Data")]
-        public string Data { get; set; }
+        public DateTime? Data { get; set; }
 
         [Required]
         [Display(Name = "Valor")]
-        public double Valor { get; set; }
+        public double? Valor { get; set; }
     }
 }

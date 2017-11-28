@@ -250,6 +250,14 @@
     <Compile Include="Migrations\201711212355161_ChangeRoleName.Designer.cs">
       <DependentUpon>201711212355161_ChangeRoleName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711282140042_valorNull.cs" />
+    <Compile Include="Migrations\201711282140042_valorNull.Designer.cs">
+      <DependentUpon>201711282140042_valorNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711282211574_alterDate.cs" />
+    <Compile Include="Migrations\201711282211574_alterDate.Designer.cs">
+      <DependentUpon>201711282211574_alterDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -402,6 +410,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711212355161_ChangeRoleName.resx">
       <DependentUpon>201711212355161_ChangeRoleName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282140042_valorNull.resx">
+      <DependentUpon>201711282140042_valorNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711282211574_alterDate.resx">
+      <DependentUpon>201711282211574_alterDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

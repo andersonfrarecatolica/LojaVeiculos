@@ -22,7 +22,7 @@ namespace LojaVeiculos.Models
 
         [Required]
         [Display(Name = "Data de Nascimento")]
-        public string DataNascimento { get; set; }
+        public DateTime? DataNascimento { get; set; }
 
         [Required]
         [Display(Name = "E-mail")]

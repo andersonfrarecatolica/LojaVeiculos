@@ -1,6 +1,6 @@
 ﻿@model LojaVeiculos.Models.Veiculo
 @{
-    ViewBag.Title = "VeiculoForm";
+    ViewBag.Title = Model.Id == 0 ? "Novo Veículo" : "Editar Veículo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
